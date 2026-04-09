@@ -1,0 +1,191 @@
+/*
+ * TORRË — Café de Origen
+ * Main — Imports, overrides del proyecto y utilidades globales
+ *
+ * Orden de imports OBLIGATORIO:
+ * 1. design-system (variables y tokens)
+ * 2. layout (contenedores, grids)
+ * 3. components (componentes base)
+ * 4. Este archivo (overrides y utilidades específicas del proyecto)
+ */
+
+/* Google Fonts — debe ir ANTES de cualquier @import de CSS para que
+   Vite/lightningcss no emita el warning "@import must precede all rules" */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Tailwind CSS v4 — debe ir PRIMERO para que las utilities
+   puedan ser sobreescritas por el design system custom */
+@import './tailwind.css';
+
+@import './design-system.css';
+@import './tokens-semantic.css';
+@import './layout.css';
+@import './components.css';
+@import './components-extended.css';
+
+/* ============================================================
+   OVERRIDES DE SCROLLBAR (Webkit)
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-negro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-cobre-rgb), 0.5);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cobre);
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: rgba(var(--color-cobre-rgb), 0.35);
+  color: var(--color-crema);
+}
+
+/* ============================================================
+   OVERRIDES GLOBALES DEL PROYECTO
+   ============================================================ */
+
+/* Padding-top en el main para compensar navbar fija */
+main {
+  padding-top: var(--nav-height);
+}
+
+/* Hero no necesita padding-top — ocupa full viewport desde arriba */
+main > .section-hero:first-child {
+  padding-top: 0;
+  margin-top: calc(var(--nav-height) * -1);
+}
+
+/* ============================================================
+   UTILIDADES DE FONDO (semánticas por sección)
+   ============================================================ */
+
+.bg-hero        { background-color: var(--section-hero-bg); }
+.bg-productos   { background-color: var(--section-productos-bg); }
+.bg-diff        { background-color: var(--section-diff-bg); }
+.bg-historia    { background-color: var(--section-historia-bg); }
+.bg-proceso     { background-color: var(--section-proceso-bg); }
+.bg-social      { background-color: var(--section-social-bg); }
+.bg-cta         { background-color: var(--section-cta-bg); }
+.bg-footer      { background-color: var(--section-footer-bg); }
+
+/* ============================================================
+   TEXTURA DE GRANO (overlay sutil para estética artesanal)
+   Aplicar en secciones oscuras con ::before
+   ============================================================ */
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: var(--z-raised);
+  border-radius: inherit;
+}
+
+/* ============================================================
+   ANIMACIONES BASE (para Framer Motion / GSAP)
+   Estas clases son el estado inicial de elementos animados.
+   Framer Motion / GSAP las sobreescribe en runtime.
+   ============================================================ */
+
+/* Estado inicial — invisible para fade-in upward */
+[data-animate="fade-up"] {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+/* Estado inicial — invisible para fade-in */
+[data-animate="fade-in"] {
+  opacity: 0;
+}
+
+/* Respeta preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   UTILIDADES DE ESPACIADO RESPONSIVE
+   ============================================================ */
+
+.mt-section { margin-top: var(--section-padding-y); }
+.mb-section { margin-bottom: var(--section-padding-y); }
+.py-section { padding-block: var(--section-padding-y); }
+.px-section { padding-inline: var(--section-padding-x); }
+
+/* ============================================================
+   ACCENT LINE (decoración horizontal de marca)
+   Usar con: <div class="accent-line"></div>
+   ============================================================ */
+
+.accent-line {
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--color-cobre),
+    var(--color-dorado)
+  );
+  margin-bottom: var(--space-6);
+}
+
+.accent-line--center {
+  margin-inline: auto;
+}
+
+/* ============================================================
+   ASPECT RATIOS COMUNES
+   ============================================================ */
+
+.aspect-square    { aspect-ratio: 1 / 1; }
+.aspect-video     { aspect-ratio: 16 / 9; }
+.aspect-portrait  { aspect-ratio: 3 / 4; }
+.aspect-landscape { aspect-ratio: 4 / 3; }
+.aspect-wide      { aspect-ratio: 21 / 9; }
+
+/* ============================================================
+   VISUALLY HIDDEN (accesibilidad — screen readers only)
+   ============================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

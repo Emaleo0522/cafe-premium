@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — permitir indexación para visibilidad en AI search
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+Sitemap: https://torre-cafe.com/sitemap.xml

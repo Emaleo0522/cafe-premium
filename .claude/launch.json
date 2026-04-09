@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cafe-premium",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\Users\Ema\Desktop\claude\cafe-premium && npm run dev"],
+      "port": 5173
+    }
+  ]
+}

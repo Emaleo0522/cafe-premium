@@ -1,0 +1,78 @@
+{
+  "project": "cafe-premium",
+  "version": 1,
+  "created_at": "2026-04-08",
+  "identity": {
+    "name": "TORRË — Café de Origen",
+    "slogan": "Desde la finca hasta tu taza — sin escalas.",
+    "tone": "premium pero accesible, humano, sensorial, artesanal moderno",
+    "personality": ["honesto", "artesanal", "preciso", "cálido", "directo"],
+    "target": "Profesional urbano 28-45 que aprecia el proceso detrás del producto. Valora la transparencia, el origen y la calidad sobre el status."
+  },
+  "colors": {
+    "primary":    { "hex": "#2C1810", "use": "elementos principales, headers, navbar, footer" },
+    "secondary":  { "hex": "#B87333", "use": "CTA buttons, acentos cobre, highlights de precio" },
+    "accent":     { "hex": "#C9A96E", "use": "detalles dorados, líneas decorativas, hover states" },
+    "neutral":    { "hex": "#F5F0EB", "use": "backgrounds de sección, cards, superficies suaves" },
+    "text_dark":  { "hex": "#1A1A1A", "use": "cuerpo de texto sobre fondo claro — ratio 16:1" },
+    "text_light": { "hex": "#E8DDD3", "use": "texto sobre fondos oscuros (#2C1810, #1A1A1A) — ratio 7:1" }
+  },
+  "typography": {
+    "heading": {
+      "family": "Playfair Display",
+      "weights": ["700", "900"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/Playfair+Display",
+      "note": "Serif editorial con carácter. Para títulos de producto, nombre de marca y secciones hero."
+    },
+    "body": {
+      "family": "DM Sans",
+      "weights": ["300", "400"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/DM+Sans",
+      "note": "Sans-serif humanista, máxima legibilidad. Para párrafos, descripciones, nav links."
+    },
+    "accent": {
+      "family": "JetBrains Mono",
+      "weights": ["400", "600"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/JetBrains+Mono",
+      "use": "datos técnicos: fecha de tostado, gramaje, altitud de finca, precios, etiquetas de origen. Contraste funcional que refuerza la precisión artesanal."
+    }
+  },
+  "asset_specs": {
+    "logo": {
+      "width": 800,
+      "height": 800,
+      "bg": "transparent",
+      "formats": ["SVG", "PNG"],
+      "note": "Logotipo wordmark + símbolo. Variantes: sobre fondo oscuro (#2C1810) y sobre fondo claro (#F5F0EB). Sin efectos 3D ni sombras. Estilo grabado/lineal."
+    },
+    "hero_image": {
+      "width": 1920,
+      "height": 1080,
+      "format": "PNG",
+      "variants": ["desktop_1920x1080", "mobile_768x1024"],
+      "note": "Imagen ambiental sin texto. Mood oscuro y cálido. Puede incluir: granos de café, manos del tostador, vapor, superficie rústica. Sin personas reconocibles."
+    }
+  },
+  "prompt_ingredients": {
+    "style_tags": [
+      "specialty coffee",
+      "artisan roastery",
+      "dark moody editorial",
+      "warm amber tones",
+      "copper and espresso palette",
+      "macro texture",
+      "handcrafted premium",
+      "cinematic food photography",
+      "chiaroscuro lighting",
+      "shallow depth of field",
+      "analog warmth",
+      "latin american origin"
+    ],
+    "photo_style": "Cinematic macro photography with chiaroscuro lighting. Deep shadows with warm amber and copper highlights. Textures: burlap, aged wood, ceramic, raw coffee beans. Shot on medium format film aesthetic — slight grain, warm color grading. No bright whites, no studio look. Mood: a late-night roastery, intimate and precise.",
+    "logo_style": "Minimal engraved wordmark. Serif letterforms inspired by vintage European coffee labels. Clean single-color vector. Works on both dark espresso and warm cream backgrounds. No gradients, no drop shadows. Geometric precision meets organic warmth.",
+    "avoid_global": "blurry, pixelated, low quality, worst quality, deformed, watermark, oversaturated, neon colors, purple tones, bright blue, pink, plastic look, corporate stock photo, cheerful bright lighting, flat lay white background, cartoon, illustration, 3D render, text overlay, UI elements, borders, frame, signature"
+  }
+}

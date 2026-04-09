@@ -1,0 +1,450 @@
+/*
+ * TORRË — Café de Origen
+ * Layout — Contenedores, Grid, Breakpoints, Flexbox Utilities
+ *
+ * Breakpoints: 320px / 768px / 1024px / 1280px
+ * Mobile-first
+ */
+
+/* ============================================================
+   CONTENEDORES
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container-sm  { max-width: var(--container-sm);  margin-inline: auto; padding-inline: var(--container-padding); }
+.container-md  { max-width: var(--container-md);  margin-inline: auto; padding-inline: var(--container-padding); }
+.container-lg  { max-width: var(--container-lg);  margin-inline: auto; padding-inline: var(--container-padding); }
+.container-xl  { max-width: var(--container-xl);  margin-inline: auto; padding-inline: var(--container-padding); }
+.container-2xl { max-width: var(--container-2xl); margin-inline: auto; padding-inline: var(--container-padding); }
+
+/* Contenedor full-bleed (sections que rompen el layout) */
+.container-full {
+  width: 100%;
+  padding-inline: 0;
+}
+
+/* ============================================================
+   SECTION BASE
+   ============================================================ */
+
+.section {
+  padding-block: var(--section-padding-y);
+  position: relative;
+}
+
+/* Variante sin padding-top (cuando hay overlap visual) */
+.section--no-top { padding-top: 0; }
+.section--no-bottom { padding-bottom: 0; }
+
+/* Secciones con overflow hidden para contener elementos rotos */
+.section--clipped { overflow: hidden; }
+
+/* ============================================================
+   GRID — SISTEMA GENERAL
+   ============================================================ */
+
+/* Grid base responsive con auto-fill */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Grid de productos: 1 col mobile → 3 col desktop */
+.grid-productos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .grid-productos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-productos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+  /* Card central elevada — efecto offset asimétrico */
+  .grid-productos > *:nth-child(2) {
+    transform: translateY(-1.5rem);
+  }
+}
+
+/* Grid de pilares/diferenciadores: 1 → 2 × 2 */
+.grid-pilares {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .grid-pilares {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Grid historia asimétrico: texto + imagen */
+.grid-historia {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid-historia {
+    grid-template-columns: 55fr 45fr;
+    gap: var(--space-16);
+    align-items: start;
+    min-height: 70vh;
+  }
+}
+
+/* Grid testimonios */
+.grid-testimonios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .grid-testimonios {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-testimonios {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Grid métricas (números grandes) */
+.grid-metricas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .grid-metricas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================================
+   HERO LAYOUT — composición asimétrica
+   Texto ancla inferior-izquierdo. Imagen full viewport.
+   ============================================================ */
+
+.hero-layout {
+  position: relative;
+  min-height: var(--hero-min-height);
+  display: flex;
+  align-items: flex-end;        /* ancla al fondo */
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.hero-layout__bg {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  overflow: hidden;
+}
+
+.hero-layout__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 1;
+}
+
+.hero-layout__bg img,
+.hero-layout__bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero-layout__content {
+  position: relative;
+  z-index: var(--z-raised);
+  width: 100%;
+}
+
+/* Texto principal hero — alineado izquierda, max 70% ancho en desktop */
+.hero-layout__text {
+  max-width: min(100%, 42rem);
+}
+
+@media (min-width: 1024px) {
+  .hero-layout__text {
+    max-width: min(70%, 56rem);
+  }
+}
+
+/* ============================================================
+   HISTORIA LAYOUT — asimétrico con imagen rompiendo grid
+   ============================================================ */
+
+.historia-layout {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .historia-layout__imagen {
+    position: relative;
+    /* La imagen "rompe" el grid cayendo más abajo que el texto */
+    transform: translateY(3rem);
+  }
+
+  .historia-layout__texto {
+    padding-top: var(--space-12);
+  }
+}
+
+/* ============================================================
+   TIMELINE LAYOUT (proceso)
+   Línea vertical continua con nodos copper
+   ============================================================ */
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* Línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.25rem;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-cobre) 15%,
+    var(--color-cobre) 85%,
+    transparent
+  );
+  z-index: var(--z-base);
+}
+
+@media (min-width: 768px) {
+  .timeline {
+    gap: var(--space-16);
+  }
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline__item {
+  position: relative;
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+  padding-left: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .timeline__item {
+    padding-left: 0;
+    width: 45%;
+  }
+  /* Items alternados izquierda/derecha */
+  .timeline__item:nth-child(even) {
+    margin-left: auto;
+  }
+}
+
+/* Nodo copper */
+.timeline__nodo {
+  position: absolute;
+  left: 0;
+  top: 0.125rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-cobre);
+  border: 3px solid var(--body-light-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: var(--z-raised);
+}
+
+@media (min-width: 768px) {
+  .timeline__nodo {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   FLEXBOX UTILITIES
+   ============================================================ */
+
+.flex          { display: flex; }
+.flex-col      { flex-direction: column; }
+.flex-wrap     { flex-wrap: wrap; }
+.items-start   { align-items: flex-start; }
+.items-center  { align-items: center; }
+.items-end     { align-items: flex-end; }
+.justify-start    { justify-content: flex-start; }
+.justify-center   { justify-content: center; }
+.justify-end      { justify-content: flex-end; }
+.justify-between  { justify-content: space-between; }
+.gap-2   { gap: var(--space-2); }
+.gap-4   { gap: var(--space-4); }
+.gap-6   { gap: var(--space-6); }
+.gap-8   { gap: var(--space-8); }
+.gap-12  { gap: var(--space-12); }
+
+/* ============================================================
+   SKIP NAV (accesibilidad)
+   ============================================================ */
+
+.skip-nav {
+  position: fixed;
+  top: -100%;
+  left: var(--space-4);
+  z-index: var(--z-toast);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-cobre);
+  color: var(--color-crema);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: top var(--duration-fast) var(--ease-out);
+}
+
+.skip-nav:focus {
+  top: var(--space-4);
+}
+
+/* ============================================================
+   PROCESS TIMELINE — Sección "Del grano a tu taza"
+   Mobile: columna vertical con línea izquierda
+   Desktop (≥768px): fila horizontal con línea conectora entre pasos
+   ============================================================ */
+
+/* Contenedor de los 4 pasos */
+.process-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* Línea vertical — solo mobile */
+.process-timeline__track {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Alineada con el nodo copper del step */
+  left: 5px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-cobre) 10%,
+    var(--color-cobre) 90%,
+    transparent
+  );
+  z-index: var(--z-base);
+  pointer-events: none;
+}
+
+/* Mobile: cada paso tiene padding izquierdo para dejar espacio a la línea */
+.process-step {
+  padding-left: var(--space-8);
+}
+
+/* Mobile: nodo posicionado sobre la línea */
+.process-step__node {
+  position: absolute;
+  left: 0;
+  /* Centrado verticalmente respecto al nodo, debajo del número */
+}
+
+/* Conector horizontal — oculto en mobile */
+.process-step__connector {
+  display: none;
+}
+
+/* ── Desktop ≥ 768px ── */
+@media (min-width: 768px) {
+  /* Track: horizontal a mitad de los nodos */
+  .process-timeline__track {
+    /* Línea horizontal — pasa por los nodos copper */
+    top: calc(clamp(3.5rem, 2rem + 4vw, 5.5rem) + var(--space-5) + 6px); /* centrada en nodo */
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-cobre) 8%,
+      var(--color-cobre) 92%,
+      transparent
+    );
+  }
+
+  /* Layout horizontal */
+  .process-timeline {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* Sin padding izquierdo en desktop */
+  .process-step {
+    padding-left: 0;
+    padding-right: var(--space-8);
+  }
+
+  /* Nodo relativo al flujo — no absolute */
+  .process-step__node {
+    position: relative;
+    left: auto;
+  }
+
+  /* Conector horizontal entre pasos — visible en desktop */
+  .process-step__connector {
+    display: block;
+    position: absolute;
+    /* Posición vertical alineada al nodo */
+    top: calc(clamp(3.5rem, 2rem + 4vw, 5.5rem) + var(--space-5) + 1px);
+    right: 0;
+    width: var(--space-8);
+    height: 1px;
+    /* La línea de fondo (track) ya cubre esto — connector es redundante */
+    /* Se mantiene el elemento por si se quiere extender el diseño */
+    background: transparent;
+  }
+}

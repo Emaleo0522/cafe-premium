@@ -1,0 +1,460 @@
+/*
+ * TORRË — Café de Origen
+ * Design System — Variables & Tokens
+ * UX Architect: cafe-premium/css-foundation
+ *
+ * Naming convention: $component-state-property-size
+ * Three-layer body colors (profundidad semántica)
+ * No theme toggle — diseño oscuro con secciones alternas
+ */
+
+/* ============================================================
+   DESIGN TOKENS — :root
+   ============================================================ */
+:root {
+
+  /* ------------------------------------------------------------------
+     COLORES DE MARCA
+     ------------------------------------------------------------------ */
+  --color-negro:          #1A1A1A;
+  --color-marron-oscuro:  #2C1810;
+  --color-crema:          #F5F0EB;
+  --color-beige:          #E8DDD3;
+  --color-cobre:          #B87333;
+  --color-dorado:         #C9A96E;
+
+  /* Variantes directional de marca */
+  --color-cobre-dark:     #9A5F25;
+  --color-cobre-light:    #D4935A;
+  --color-dorado-dark:    #A8873C;
+  --color-dorado-light:   #DEC48F;
+  --color-negro-deep:     #111111;
+  --color-negro-surface:  #242424;
+  --color-marron-surface: #3D2218;
+  --color-crema-muted:    #E2D9D0;
+
+  /* ------------------------------------------------------------------
+     RGB COMPANIONS — para alpha compositing con rgba()
+     ------------------------------------------------------------------ */
+  --color-negro-rgb:          26, 26, 26;
+  --color-marron-oscuro-rgb:  44, 24, 16;
+  --color-crema-rgb:          245, 240, 235;
+  --color-beige-rgb:          232, 221, 211;
+  --color-cobre-rgb:          184, 115, 51;
+  --color-dorado-rgb:         201, 169, 110;
+  --color-negro-deep-rgb:     17, 17, 17;
+
+  /* ------------------------------------------------------------------
+     THREE-LAYER BODY — FONDOS (profundidad semántica)
+     ------------------------------------------------------------------ */
+  /* Fondos oscuros (secciones hero, historia, testimonios, CTA) */
+  --body-bg:                  #1A1A1A;   /* fondo primario oscuro */
+  --body-secondary-bg:        #2C1810;   /* fondo alternativo marrón */
+  --body-tertiary-bg:         #242424;   /* cards y superficies sobre oscuro */
+
+  /* Fondos claros (secciones diferenciadores, proceso) */
+  --body-light-bg:            #F5F0EB;   /* fondo crema primario */
+  --body-light-secondary-bg:  #E8DDD3;   /* fondo beige secundario */
+  --body-light-tertiary-bg:   #EDE5DD;   /* superficies sobre crema */
+
+  /* Footer */
+  --body-footer-bg:           #111111;
+
+  /* ------------------------------------------------------------------
+     THREE-LAYER BODY — TEXTOS (profundidad semántica)
+     ------------------------------------------------------------------ */
+  /* Textos sobre fondos oscuros */
+  --body-color:               #F5F0EB;   /* texto primario sobre oscuro */
+  --body-secondary-color:     #E8DDD3;   /* texto secundario sobre oscuro */
+  --body-tertiary-color:      rgba(245, 240, 235, 0.55);  /* texto muted sobre oscuro */
+  --body-emphasis-color:      #C9A96E;   /* énfasis / dorado sobre oscuro */
+
+  /* Textos sobre fondos claros */
+  --body-light-color:         #1A1A1A;   /* texto primario sobre crema */
+  --body-light-secondary-color: #2C1810; /* texto secundario sobre crema */
+  --body-light-tertiary-color: rgba(26, 26, 26, 0.5);    /* texto muted sobre crema */
+  --body-light-emphasis-color: #B87333;  /* énfasis / cobre sobre crema */
+
+  /* ------------------------------------------------------------------
+     COLOR PRIMARIO INTERACTIVO
+     ------------------------------------------------------------------ */
+  --primary:         #B87333;   /* cobre */
+  --primary-dark:    #9A5F25;
+  --primary-light:   #D4935A;
+  --primary-rgb:     184, 115, 51;
+
+  --secondary:       #C9A96E;   /* dorado */
+  --secondary-dark:  #A8873C;
+  --secondary-rgb:   201, 169, 110;
+
+  /* ------------------------------------------------------------------
+     BORDES
+     ------------------------------------------------------------------ */
+  --border-color:              rgba(245, 240, 235, 0.12);
+  --border-color-strong:       rgba(245, 240, 235, 0.25);
+  --border-color-light:        rgba(26, 26, 26, 0.15);
+  --border-color-light-strong: rgba(26, 26, 26, 0.3);
+  --border-color-copper:       rgba(184, 115, 51, 0.35);
+  --border-color-gold:         rgba(201, 169, 110, 0.4);
+
+  /* ------------------------------------------------------------------
+     TIPOGRAFÍA — FAMILIAS
+     ------------------------------------------------------------------ */
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent:  'JetBrains Mono', 'Courier New', monospace;
+
+  /* ------------------------------------------------------------------
+     TIPOGRAFÍA — ESCALA FLUIDA (clamp)
+     ------------------------------------------------------------------ */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+  --text-lg:   clamp(1rem, 0.9rem + 0.35vw, 1.125rem);
+  --text-xl:   clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-2xl:  clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-3xl:  clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+  --text-4xl:  clamp(1.75rem, 1.3rem + 1.5vw, 2.25rem);
+  --text-5xl:  clamp(2rem, 1.4rem + 2vw, 3rem);
+  --text-6xl:  clamp(2.5rem, 1.5rem + 3.5vw, 4rem);
+  --text-7xl:  clamp(3rem, 1.5rem + 5vw, 5.5rem);
+
+  /* ------------------------------------------------------------------
+     TIPOGRAFÍA — PESOS
+     ------------------------------------------------------------------ */
+  --font-light:    300;
+  --font-regular:  400;
+  --font-medium:   500;
+  --font-bold:     700;
+  --font-extrabold:800;
+  --font-black:    900;
+
+  /* ------------------------------------------------------------------
+     TIPOGRAFÍA — LINE-HEIGHT & LETTER-SPACING
+     ------------------------------------------------------------------ */
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight:   -0.04em;
+  --tracking-snug:    -0.02em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.05em;
+  --tracking-wider:    0.1em;
+  --tracking-widest:   0.2em;
+
+  /* ------------------------------------------------------------------
+     ESPACIADO — base 4px
+     ------------------------------------------------------------------ */
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-32:  8rem;      /* 128px */
+
+  /* Espaciado de secciones (mín 80px mobile, 120px desktop) */
+  --section-padding-y:   clamp(5rem, 4rem + 3vw, 7.5rem);  /* 80–120px */
+  --section-padding-x:   clamp(1.5rem, 4vw, 6rem);
+
+  /* ------------------------------------------------------------------
+     CONTENEDORES
+     ------------------------------------------------------------------ */
+  --container-sm:   640px;
+  --container-md:   768px;
+  --container-lg:   1024px;
+  --container-xl:   1280px;
+  --container-2xl:  1440px;
+  --container-padding: clamp(1.5rem, 4vw, 3rem);
+
+  /* ------------------------------------------------------------------
+     RADIOS DE BORDE
+     ------------------------------------------------------------------ */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------------
+     SOMBRAS — dark-first (fondos oscuros predominan)
+     ------------------------------------------------------------------ */
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl:    0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-copper: 0 4px 24px rgba(184, 115, 51, 0.3);
+  --shadow-gold:   0 4px 24px rgba(201, 169, 110, 0.25);
+  --shadow-glow:   0 0 40px rgba(184, 115, 51, 0.2);
+
+  /* ------------------------------------------------------------------
+     Z-INDEX — escala nombrada centralizada
+     ------------------------------------------------------------------ */
+  --z-below:      -1;
+  --z-base:        0;
+  --z-raised:     10;
+  --z-overlay:   100;
+  --z-dropdown: 1000;
+  --z-sticky:   1010;
+  --z-fixed:    1020;
+  --z-modal:    1050;
+  --z-tooltip:  1070;
+  --z-toast:    1090;
+
+  /* ------------------------------------------------------------------
+     TRANSICIONES & ANIMACIONES
+     ------------------------------------------------------------------ */
+  --ease-out:     cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 700ms;
+
+  --transition-base: var(--duration-base) var(--ease-out);
+  --transition-slow: var(--duration-slow) var(--ease-smooth);
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — BTN
+     ------------------------------------------------------------------ */
+  --btn-primary-bg:           #B87333;
+  --btn-primary-color:        #1A1A1A;
+  --btn-primary-border:       transparent;
+  --btn-primary-hover-bg:     #9A5F25;
+  --btn-primary-hover-color:  #F5F0EB;
+  --btn-primary-active-bg:    #7E4D1A;
+
+  --btn-ghost-bg:             transparent;
+  --btn-ghost-color:          #F5F0EB;
+  --btn-ghost-border:         rgba(245, 240, 235, 0.35);
+  --btn-ghost-hover-bg:       rgba(245, 240, 235, 0.08);
+  --btn-ghost-hover-border:   rgba(245, 240, 235, 0.6);
+
+  --btn-outline-copper-bg:    transparent;
+  --btn-outline-copper-color: #B87333;
+  --btn-outline-copper-border:#B87333;
+  --btn-outline-copper-hover-bg: #B87333;
+  --btn-outline-copper-hover-color: #F5F0EB;
+
+  --btn-padding-y-sm:  0.5rem;
+  --btn-padding-x-sm:  1rem;
+  --btn-padding-y-md:  0.75rem;
+  --btn-padding-x-md:  1.75rem;
+  --btn-padding-y-lg:  1rem;
+  --btn-padding-x-lg:  2.5rem;
+  --btn-font-size-md:  var(--text-sm);
+  --btn-font-size-lg:  var(--text-base);
+  --btn-letter-spacing: var(--tracking-wider);
+  --btn-font-weight:   500;
+  --btn-border-radius: var(--radius-sm);
+  --btn-transition:    background-color var(--transition-base),
+                       color var(--transition-base),
+                       border-color var(--transition-base),
+                       box-shadow var(--transition-base);
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — NAVBAR
+     ------------------------------------------------------------------ */
+  --nav-height:                    4.5rem;
+  --nav-bg-transparent:            transparent;
+  --nav-bg-scrolled:               rgba(26, 26, 26, 0.92);
+  --nav-bg-scrolled-backdrop:      blur(16px);
+  --nav-link-color:                rgba(245, 240, 235, 0.8);
+  --nav-link-hover-color:          #F5F0EB;
+  --nav-link-active-color:         #C9A96E;
+  --nav-link-disabled-color:       rgba(245, 240, 235, 0.35);
+  --nav-border-scrolled:           rgba(245, 240, 235, 0.08);
+  --nav-logo-color:                #F5F0EB;
+  --nav-logo-accent-color:         #C9A96E;
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — CARDS (productos)
+     ------------------------------------------------------------------ */
+  --card-bg:                 #242424;
+  --card-bg-hover:           #2D2D2D;
+  --card-border-color:       rgba(245, 240, 235, 0.08);
+  --card-border-hover-color: rgba(184, 115, 51, 0.4);
+  --card-border-radius:      var(--radius-lg);
+  --card-padding:            var(--space-6);
+  --card-shadow:             var(--shadow-md);
+  --card-shadow-hover:       var(--shadow-copper);
+  --card-transition:         transform var(--transition-slow),
+                             box-shadow var(--transition-slow),
+                             border-color var(--transition-base);
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — INPUT
+     ------------------------------------------------------------------ */
+  --input-bg:                rgba(245, 240, 235, 0.06);
+  --input-border-color:      rgba(245, 240, 235, 0.2);
+  --input-focus-border-color: #B87333;
+  --input-focus-shadow:      0 0 0 3px rgba(184, 115, 51, 0.2);
+  --input-color:             #F5F0EB;
+  --input-placeholder-color: rgba(245, 240, 235, 0.4);
+  --input-border-radius:     var(--radius-md);
+  --input-padding-y:         0.75rem;
+  --input-padding-x:         1rem;
+  --input-font-size:         var(--text-base);
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — MODAL
+     ------------------------------------------------------------------ */
+  --modal-backdrop-bg:          rgba(17, 17, 17, 0.85);
+  --modal-backdrop-blur:        blur(8px);
+  --modal-content-bg:           #1E1E1E;
+  --modal-content-border:       rgba(245, 240, 235, 0.1);
+  --modal-content-border-radius: var(--radius-xl);
+  --modal-content-box-shadow-xs: var(--shadow-xl);
+  --modal-content-padding:       var(--space-8);
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — BADGE / TAG
+     ------------------------------------------------------------------ */
+  --badge-copper-bg:    rgba(184, 115, 51, 0.15);
+  --badge-copper-color: #D4935A;
+  --badge-copper-border: rgba(184, 115, 51, 0.3);
+  --badge-gold-bg:      rgba(201, 169, 110, 0.12);
+  --badge-gold-color:   #DEC48F;
+  --badge-border-radius: var(--radius-full);
+  --badge-padding-y:    0.25rem;
+  --badge-padding-x:    0.75rem;
+  --badge-font-size:    var(--text-xs);
+  --badge-letter-spacing: var(--tracking-widest);
+
+  /* ------------------------------------------------------------------
+     COMPONENTES — DIVIDER DECORATIVO
+     ------------------------------------------------------------------ */
+  --divider-color:         rgba(201, 169, 110, 0.3);
+  --divider-color-strong:  rgba(184, 115, 51, 0.5);
+  --divider-thickness:     1px;
+
+  /* ------------------------------------------------------------------
+     HERO (sección 1)
+     ------------------------------------------------------------------ */
+  --hero-bg:               #1A1A1A;
+  --hero-overlay:          linear-gradient(
+                             to bottom,
+                             rgba(26, 26, 26, 0.3) 0%,
+                             rgba(26, 26, 26, 0.6) 60%,
+                             rgba(26, 26, 26, 0.95) 100%
+                           );
+  --hero-min-height:        100svh;
+  --hero-text-color:        #F5F0EB;
+
+  /* ------------------------------------------------------------------
+     SECCIONES — colores por sección (alternancia)
+     ------------------------------------------------------------------ */
+  /* Sec. 1 Hero — dark */
+  --section-hero-bg:       #1A1A1A;
+  --section-hero-color:    #F5F0EB;
+
+  /* Sec. 2 Productos — dark marrón */
+  --section-productos-bg:  #2C1810;
+  --section-productos-color: #F5F0EB;
+
+  /* Sec. 3 Diferenciadores — light crema */
+  --section-diff-bg:       #F5F0EB;
+  --section-diff-color:    #1A1A1A;
+
+  /* Sec. 4 Historia — dark negro */
+  --section-historia-bg:   #1A1A1A;
+  --section-historia-color: #F5F0EB;
+
+  /* Sec. 5 Proceso — light crema */
+  --section-proceso-bg:    #F5F0EB;
+  --section-proceso-color: #1A1A1A;
+
+  /* Sec. 6 Testimonios — dark marrón */
+  --section-social-bg:     #2C1810;
+  --section-social-color:  #F5F0EB;
+
+  /* Sec. 7 CTA — dark profundo */
+  --section-cta-bg:        #111111;
+  --section-cta-color:     #F5F0EB;
+
+  /* Sec. 8 Footer */
+  --section-footer-bg:     #111111;
+  --section-footer-color:  rgba(245, 240, 235, 0.6);
+}
+
+/* ============================================================
+   DECISIÓN DE COMPOSICIÓN ESPACIAL
+   Landing page premium → layouts no-convencionales.
+   - Hero: texto ancla inferior-izquierdo, imagen cubre full viewport
+     con overlay gradiente. Asimetría deliberada, no centrado.
+   - Historia (sec. 4): grid asimétrico 55/45, imagen "rompe" el
+     grid con translate negativo. Negative space generoso a la derecha.
+   - Productos: grid 3 columnas con card central elevada (scale offset)
+   - Pilares: cuadrícula 2×2 con líneas divisorias doradas, no cards
+   - Timeline proceso: línea vertical continua con nodos copper
+   - CTA final: composición tipográfica centrada, headline gigante
+   ============================================================ */
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Safari focus fix */
+:where(button):focus:not(:focus-visible) {
+  outline: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-normal);
+  color: var(--body-color);
+  background-color: var(--body-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}

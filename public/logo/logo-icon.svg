@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180" role="img" aria-label="TORRË icono">
+
+  <!-- Symbol: Stylized coffee drip tower -->
+  <g transform="translate(20, 10)">
+    <!-- Tower arch top -->
+    <path d="M60,10 L60,15 C60,15 45,15 35,25 C25,35 25,50 25,50 L35,50 C35,50 35,38 42,31 C49,24 60,24 60,24 L60,32 L70,20 L60,10 Z" fill="#2C1810"/>
+    <path d="M60,10 L60,15 C60,15 75,15 85,25 C95,35 95,50 95,50 L85,50 C85,50 85,38 78,31 C71,24 60,24 60,24 L60,32 L50,20 L60,10 Z" fill="#2C1810"/>
+
+    <!-- Tower body: vertical column -->
+    <rect x="53" y="50" width="14" height="40" fill="#2C1810"/>
+
+    <!-- Drip base / filter -->
+    <path d="M44,90 L76,90 L70,108 L62,108 L62,120 L58,120 L58,108 L50,108 Z" fill="#2C1810"/>
+
+    <!-- Cup rim -->
+    <path d="M48,120 Q48,115 52,115 L68,115 Q72,115 72,120 L74,138 Q74,142 60,142 Q46,142 46,138 Z" fill="#2C1810"/>
+
+    <!-- Cup handle -->
+    <path d="M72,122 Q82,122 82,130 Q82,138 72,138" stroke="#2C1810" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Steam wisps -->
+    <path d="M50,108 Q47,103 50,98 Q53,93 50,88" stroke="#B87333" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M60,106 Q57,101 60,96 Q63,91 60,86" stroke="#B87333" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M70,108 Q67,103 70,98 Q73,93 70,88" stroke="#B87333" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+    <!-- Accent line at base -->
+    <line x1="38" y1="153" x2="82" y2="153" stroke="#C9A96E" stroke-width="1.5"/>
+  </g>
+</svg>

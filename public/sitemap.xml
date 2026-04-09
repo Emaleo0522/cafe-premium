@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://torre-cafe.com/</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://torre-cafe.com/images/hero.png</image:loc>
+      <image:title>TORRË — Café de Especialidad Tostado Artesanal</image:title>
+      <image:caption>Café de origen único tostado en lotes pequeños</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://torre-cafe.com/images/thumbnail.png</image:loc>
+      <image:title>TORRË Café de Origen</image:title>
+    </image:image>
+  </url>
+</urlset>
